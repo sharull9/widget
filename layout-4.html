@@ -76,6 +76,7 @@
         --heading-color: #000000;
         --paragraph-color: #464646;
         --price-color: #4f46e5;
+        --icon: #4f46e5;
       }
       body {
         font-family: "Inter", sans-serif;
@@ -96,18 +97,20 @@
       .tag {
         color: var(--main-color) !important;
       }
+      .material-symbols-outlined {
+        color: var(--icon);
+      }
       @layer base {
         .card {
-          @apply p-7 border bg-card rounded-xl transition-all duration-200 ease-in-out hover:shadow-lg;
-          border-width: var(--border-width) !important;
+          @apply p-14 bg-card transition-all duration-200 ease-in-out;
         }
         .btn {
           @apply py-2 text-center text-base w-full rounded-xl transition-all duration-200 ease-in-out bg-lightBlue text-main hover:shadow-md;
         }
         .card-active {
-          @apply border-main lg:scale-110;
-          border-width: var(--active-border-width) !important;
+          @apply border-main bg-main rounded-lg;
           background-color: var(--active-card) !important;
+          border-width: var(--border-width);
         }
         .card-active .btn {
           @apply bg-main text-lightBlue hover:shadow-md;
@@ -172,9 +175,7 @@
         on yearly
       </p>
     </div>
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-5 px-4 gap-7 lg:max-w-7xl mx-auto"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-3 pt-5 px-4 lg:max-w-7xl mx-auto">
       <div class="card relative">
         <h2 class="text-base font-bold">Basic</h2>
         <div>
@@ -194,32 +195,24 @@
         </div>
         <ul class="list-disc list-inside grid gap-2">
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             5 products
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Up to 1,000 subscribers
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Basic analytics
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             48-hour support response time
           </li>
         </ul>
       </div>
-      <div class="card card-active relative">
+      <div class="card card-active relative z-0">
         <h2 class="text-base font-bold">Basic</h2>
         <div>
           <p class="text-sm">
@@ -238,27 +231,19 @@
         </div>
         <ul class="list-disc list-inside grid gap-2">
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             5 products
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Up to 1,000 subscribers
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Basic analytics
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             48-hour support response time
           </li>
         </ul>
@@ -282,71 +267,19 @@
         </div>
         <ul class="list-disc list-inside grid gap-2">
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             5 products
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Up to 1,000 subscribers
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             Basic analytics
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
-            48-hour support response time
-          </li>
-        </ul>
-      </div>
-      <div class="card relative">
-        <h2 class="text-base font-bold">Basic</h2>
-        <div>
-          <p class="text-sm">
-            The essentials to provide your best work for clients.
-          </p>
-        </div>
-        <div class="mt-5">
-          <p class="text-base">
-            <span>$</span>
-            <span class="price text-5xl font-bold leading-none">15</span>
-            <span>/month</span>
-          </p>
-        </div>
-        <div class="my-5">
-          <button class="btn">Buy plan</button>
-        </div>
-        <ul class="list-disc list-inside grid gap-2">
-          <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
-            5 products
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
-            Up to 1,000 subscribers
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
-            Basic analytics
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined text-main">
-              arrow_right
-            </span>
+            <span class="material-symbols-outlined"> arrow_right </span>
             48-hour support response time
           </li>
         </ul>
