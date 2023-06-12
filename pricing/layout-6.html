@@ -108,9 +108,9 @@
           @apply py-2 text-center text-base w-full rounded-xl transition-all duration-200 ease-in-out bg-lightBlue text-main hover:shadow-md;
         }
         .card-active {
-          @apply border-main bg-main rounded-lg;
+          @apply border-main bg-main mt-0;
           background-color: var(--active-card) !important;
-          border-width: var(--border-width);
+          border-width: var(--active-border-width);
         }
         .card-active .btn {
           @apply bg-main text-lightBlue hover:shadow-md;
@@ -175,9 +175,13 @@
         on yearly
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 pt-5 px-4 lg:max-w-7xl mx-auto">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 pt-5 px-4 lg:max-w-7xl mx-auto divide-x-2"
+    >
       <div class="card relative">
-        <h2 class="text-base font-bold">Basic</h2>
+        <div class="h-9">
+          <h2 class="text-base font-bold">Basic</h2>
+        </div>
         <div>
           <p class="text-sm">
             The essentials to provide your best work for clients.
@@ -185,71 +189,42 @@
         </div>
         <div class="mt-5">
           <p class="text-base">
-            <span>$</span>
+            <span class="price text-3xl font-bold leading-none">$</span>
             <span class="price text-5xl font-bold leading-none">15</span>
             <span>/month</span>
           </p>
         </div>
-        <div class="my-5">
+        <div class="my-10">
           <button class="btn">Buy plan</button>
         </div>
         <ul class="list-disc list-inside grid gap-2">
+          <p class="pb-4 font-bold">Everything necessary to get started.</p>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             5 products
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             Up to 1,000 subscribers
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             Basic analytics
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
-            48-hour support response time
-          </li>
-        </ul>
-      </div>
-      <div class="card card-active relative z-0">
-        <h2 class="text-base font-bold">Basic</h2>
-        <div>
-          <p class="text-sm">
-            The essentials to provide your best work for clients.
-          </p>
-        </div>
-        <div class="mt-5">
-          <p class="text-base">
-            <span>$</span>
-            <span class="price text-5xl font-bold leading-none">15</span>
-            <span>/month</span>
-          </p>
-        </div>
-        <div class="my-5">
-          <button class="btn">Buy plan</button>
-        </div>
-        <ul class="list-disc list-inside grid gap-2">
-          <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
-            5 products
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
-            Up to 1,000 subscribers
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
-            Basic analytics
-          </li>
-          <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             48-hour support response time
           </li>
         </ul>
       </div>
       <div class="card relative">
-        <h2 class="text-base font-bold">Basic</h2>
+        <span
+          class="absolute top-4 left-1/2 -translate-x-1/2 rounded-3xl bg-main px-2 py-1 text-xs font-medium text-lightBlue ring-1 ring-inset ring-main"
+          >Best Value</span
+        >
+        <div class="h-9">
+          <h2 class="text-xl !text-main font-bold">Basic</h2>
+        </div>
         <div>
           <p class="text-sm">
             The essentials to provide your best work for clients.
@@ -257,29 +232,69 @@
         </div>
         <div class="mt-5">
           <p class="text-base">
-            <span>$</span>
+            <span class="price text-3xl font-bold leading-none">$</span>
             <span class="price text-5xl font-bold leading-none">15</span>
             <span>/month</span>
           </p>
         </div>
-        <div class="my-5">
+        <div class="my-10">
           <button class="btn">Buy plan</button>
         </div>
         <ul class="list-disc list-inside grid gap-2">
+          <p class="pb-4 font-bold">Everything necessary to get started.</p>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             5 products
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             Up to 1,000 subscribers
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             Basic analytics
           </li>
           <li class="flex">
-            <span class="material-symbols-outlined"> arrow_right </span>
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
+            48-hour support response time
+          </li>
+        </ul>
+      </div>
+      <div class="card relative">
+        <div class="h-9">
+          <h2 class="text-base font-bold">Basic</h2>
+        </div>
+        <div>
+          <p class="text-sm">
+            The essentials to provide your best work for clients.
+          </p>
+        </div>
+        <div class="mt-5">
+          <p class="text-base">
+            <span class="price text-3xl font-bold leading-none">$</span>
+            <span class="price text-5xl font-bold leading-none">15</span>
+            <span>/month</span>
+          </p>
+        </div>
+        <div class="my-10">
+          <button class="btn">Buy plan</button>
+        </div>
+        <ul class="list-disc list-inside grid gap-2">
+          <p class="pb-4 font-bold">Everything necessary to get started.</p>
+          <li class="flex">
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
+            5 products
+          </li>
+          <li class="flex">
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
+            Up to 1,000 subscribers
+          </li>
+          <li class="flex">
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
+            Basic analytics
+          </li>
+          <li class="flex">
+            <span class="material-symbols-outlined mr-2"> whatshot </span>
             48-hour support response time
           </li>
         </ul>

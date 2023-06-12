@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      :root {
+        --bannerBg: #c6f1cc;
+        --textColor: #797979;
+        --acceptBg: #38693f;
+        --acceptText: #ffffff;
+      }
+      @layer base {
+        .banner {
+          @apply p-5 rounded-xl;
+        }
+        .btn {
+          @apply flex justify-center items-center bg-transparent px-8 py-2 rounded-lg;
+        }
+        .btn:hover {
+          @apply bg-transparent opacity-90;
+        }
+      }
+    </style>
+  </head>
+  <body class="">
+    <div
+      class="banner mx-auto w-11/12 shadow-lg"
+      style="background-color: var(--bannerBg)"
+    >
+      <div class="grid grid-cols-8 gap-2">
+        <div class="col-span-8 lg:col-span-6 flex items-center">
+          <p class="text-textColor" style="color: var(--textColor)">
+            We use cookie to improve your experience on our site. By using our
+            site you consent cookies.&nbsp;
+            <a href="" class="underline">Learn more </a>
+          </p>
+        </div>
+        <div
+          class="col-span-8 lg:col-span-2 flex justify-start lg:justify-end items-center gap-2"
+        >
+          <button
+            class="btn border"
+            style="
+              background-color: var(--acceptBg);
+              border-color: var(--acceptBg);
+              color: var(--acceptText);
+            "
+          >
+            Accept
+          </button>
+          <button
+            style="
+              background-color: transparent;
+              border-color: var(--acceptBg);
+              color: var(--acceptBg);
+            "
+            class="btn border"
+          >
+            Reject
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
