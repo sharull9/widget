@@ -13,100 +13,144 @@
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./output.css" />
 
+    <!-- widget config css -->
     <style type="text/tailwindcss">
       :root {
-        /* color */
-        --bgColor: #ff0000;
-        --cardBgColor: #000000;
-        --cardBorderColor: #000000;
-        --buttonBgColor: #000000;
-        --toggleBgColor: #000000;
-        --toggleIconColor: #000000;
-        --buttonActiveBgColor: #000000;
-        --cardActiveBgColor: #000000;
-        --toggleActiveBgColor: #000000;
-        --toggleActiveIconColor: #000000;
-        --cardActiveBorderColor: #000000;
-
-        /* text */
-        --titleColor: #000000;
-        --textColor: #000000;
-        --tagColor: #000000;
-        --cardTitleColor: #000000;
-        --cardTextColor: #000000;
-        --cardPriceColor: #000000;
-        --buttonTextColor: #000000;
-        --bulletPointColor: #000000;
-        --cardActiveTitleColor: #000000;
-        --buttonActiveTextColor: #000000;
-
-        /* daisy ui */
-        --padding-card: 0.5rem;
+        --primary-color: #202c46;
+        --secondary-color: #c7d2fe;
+        --body-color: #ffffff;
+        --card-color: #ffffff;
+        --card-border-color: #a3a3a3;
+        --active-card-color: #ffffff;
+        --border-width: 1px;
+        --active-border-width: 2px;
+        --heading-color: #000000;
+        --paragraph-color: #464646;
+        --card-heading-color: #000000;
+        --card-paragraph-color: #464646;
+        --price-color: #4f46e5;
+        --bullet-icon: #202c46;
+        --card-text-align: left;
+      }
+      body {
+        font-family: "Inter", sans-serif;
       }
 
-      ::-webkit-scrollbar {
-        width: 3px;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--heading-color) !important;
       }
-      ::-webkit-scrollbar-thumb {
-        background-color: rgb(0, 92, 92);
+      li,
+      p {
+        color: var(--paragraph-color) !important;
       }
-
-      .fill_icon {
-        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+      .tag {
+        color: var(--primary-color) !important;
       }
-      input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0;
-        border: 1px solid green;
+      .material-symbols-outlined {
+        color: var(--icon);
       }
-      input[type="color"]::-webkit-color-swatch {
-        border: 1px solid green;
+      .switch {
+        font-size: 17px;
+        position: relative;
+        display: inline-block;
+        width: 3.5em;
+        height: 2em;
       }
-
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #fff;
+        border: 1px solid #adb5bd;
+        transition: 0.4s;
+        border-radius: 30px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 1.4em;
+        width: 1.4em;
+        border-radius: 20px;
+        left: 0.27em;
+        bottom: 0.25em;
+        background-color: #adb5bd;
+        transition: 0.4s;
+      }
+      input:checked + .slider {
+        background-color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
+      input:focus + .slider {
+        box-shadow: 0 0 1px var(--primary-color);
+      }
+      input:checked + .slider:before {
+        transform: translateX(1.4em);
+        background-color: #fff;
+      }
       @layer base {
-        li {
-          @apply cursor-pointer;
+        .card {
+          @apply p-7 border bg-card rounded-xl border-cardBorder transition-all duration-200 ease-in-out hover:shadow-lg;
+          border-width: var(--border-width) !important;
+          text-align: var(--card-text-align) !important;
         }
-
-        input,
-        .input,
-        textarea,
-        .textarea {
-          @apply border-none outline-none ring-0 focus:border-none focus:outline-none focus:ring-0 focus:scale-100;
+        .btn {
+          @apply py-2 text-center text-base w-full rounded-xl transition-all duration-200 ease-in-out bg-lightBlue text-primary hover:bg-lightBlue hover:shadow-md;
         }
-
-        input[type="color"] {
-          -webkit-appearance: none;
-          @apply rounded-lg w-8 h-4 overflow-hidden flex-shrink-0 border border-green-500;
+        .card-active {
+          @apply border-primary lg:scale-110;
+          border-width: var(--active-border-width) !important;
+          background-color: var(--active-card) !important;
         }
-      }
-      @layer components {
-        .form-color {
-          @apply flex justify-between items-center gap-1 px-2 py-2 bg-white text-gray-500 rounded-xl;
+        .card-active .btn {
+          @apply bg-primary text-lightBlue hover:shadow-md;
         }
-        .menu_container {
-          @apply pt-4 px-2 gap-2 flex-col h-full overflow-y-scroll overflow-x-hidden hidden;
+        .price {
+          color: var(--price-color);
         }
-        .menu_container.active {
-          @apply flex;
-        }
-        .menu_accordian {
-          @apply bg-white border border-gray-200 shadow rounded-xl;
+        .discount {
+          @apply transition-all duration-200 ease-in-out opacity-0 scale-0;
         }
       }
     </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "var(--primary-color)",
+              lightBlue: "var(--secondary-color)",
+              shadow: "var(--shadow-color)",
+              body: "var(--body-color)",
+              card: "var(--card-color)",
+              activeCard: "var(--active-card)",
+              activeBorder: "var(--active-card-border)",
+              activeBorderWidth: "var(--active-border-width)",
+              cardBorder: "var(--card-border-color)",
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body class="flex h-[100vh] overflow-hidden">
     <div id="editor" class="md:w-2/6 lg:w-1/5 bg-base-200 flex flex-wrap">
       <div class="bg-gray-700 w-full p-3">
-        <p class="text-gray-200">
-          Edit Widget
-          <span
-            class="material-symbols-outlined fill_icon text-sm align-bottom"
-          >
-            edit
-          </span>
-        </p>
+        <p class="text-gray-200">Edit Widget</p>
       </div>
       <div class="w-1/6 h-full">
         <ul class="pt-4 px-2 h-full flex gap-2 flex-col">
@@ -134,8 +178,10 @@
           </li>
         </ul>
       </div>
-      <div class="hidden lg:block w-5/6 h-full bg-gray-200">
-        <ul class="menu_container active" id="dashboard">
+      <div
+        class="hidden lg:block w-5/6 h-full bg-white border-r border-gray-400"
+      >
+        <ul class="menu_container" id="dashboard">
           <li>
             <div class="card bg-base-100 shadow">
               <div class="card-body">
@@ -163,7 +209,7 @@
             </div>
           </li>
         </ul>
-        <ul class="menu_container" id="palette">
+        <ul class="menu_container" id="edit_note">
           <li>
             <div class="form-control w-full max-w-xs">
               <label class="label">
@@ -200,77 +246,102 @@
             </div>
           </li>
         </ul>
-        <ul class="menu_container" id="format_color_text">
-          <li class="menu_accordian grid grid-rows-[auto_0fr] overflow-hidden transition-all duration-200">
+        <ul class="menu_container active" id="palette">
+          <li
+            class="menu_accordian grid grid-rows-[auto_0fr] overflow-hidden transition-all duration-200"
+            id="card"
+            data-status="close"
+          >
             <div class="py-4 px-2 flex justify-between">
               <p>Card</p>
               <button class="h-6 w-6" onclick="openMenuContent(event)">
                 <span class="material-symbols-outlined"> expand_more </span>
               </button>
             </div>
-            <div class="menu_content overflow-hidden">
-              <div class="form-color">
-                <label for="cardBgColor">Background Color</label>
-                <input value="#000000" type="color" id="cardBgColor" />
+            <div class="menu_content overflow-x-hidden overflow-y-scroll">
+              <div class="transition-all duration-150 ease-in-out rounded-lg">
+                <div class="form-control w-full max-w-xs px-2 relative">
+                  <label class="label">
+                    <span class="label-text">Background color:</span>
+                  </label>
+                  <input
+                    type="text"
+                    value="#ffffff"
+                    class="input input-bordered p-2 w-full max-w-xs"
+                    id="cardBgColorTextInput"
+                  />
+                  <input
+                    type="color"
+                    class="absolute bottom-1 right-3 h-8 w-8"
+                    name=""
+                    id="cardBgColorInput"
+                  />
+                </div>
+                <div class="form-control w-full max-w-xs px-2 relative">
+                  <label class="label">
+                    <span class="label-text">Border color:</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="#fffff"
+                    class="input input-bordered w-full max-w-xs"
+                    id="cardBorderColorTextInput"
+                  />
+                  <input
+                    type="color"
+                    class="absolute bottom-1 right-3 h-8 w-8"
+                    name=""
+                    id="cardBorderColorInput"
+                  />
+                </div>
+                <p class="label px-2">
+                  <span class="label-text">Text Alignment:</span>
+                </p>
+                <div
+                  class="btn-group btn-group-vertical lg:btn-group-horizontal px-2 rounded-lg"
+                  id="textAlignment"
+                >
+                  <button class="btn btn-active" data-text-align="left">
+                    <span class="material-symbols-outlined">
+                      format_align_left
+                    </span>
+                  </button>
+                  <button class="btn" data-text-align="center">
+                    <span class="material-symbols-outlined">
+                      format_align_center
+                    </span>
+                  </button>
+                  <button class="btn" data-text-align="right">
+                    <span class="material-symbols-outlined">
+                      format_align_right
+                    </span>
+                  </button>
+                </div>
+                <div class="form-control w-full max-w-xs px-2 relative">
+                  <label class="label">
+                    <span class="label-text">Text Size:</span>
+                  </label>
+                  <input
+                    type="number"
+                    value="20"
+                    placeholder="#fffff"
+                    class="input input-bordered w-full max-w-xs"
+                  />
+                  <div
+                    class="absolute bottom-0 right-2 border border-gray-300 bg-gray-200 rounded-e-lg py-2 px-3 h-10 flex justify-center items-center"
+                  >
+                    px
+                  </div>
+                </div>
               </div>
-              <div class="form-color">
-                <label for="cardBgColor">Border Color</label>
-                <input value="#000000" type="color" id="cardBorderColor" />
-              </div>
-              <div class="form-color">
-                <label for="buttonActiveBgColor"> Active Border Color </label>
-                <input
-                  value="#000000"
-                  type="color"
-                  id="cardActiveBorderColor"
-                />
-              </div>
-              <div class="form-color">
-                <label for="toggleActiveBgColor">
-                  Active Background Color
-                </label>
-                <input value="#000000" type="color" id="cardActiveBgColor" />
-              </div>
             </div>
           </li>
           <li>
             <div class="form-color">
-              <label for="bgColor">Background Color</label
-              ><input value="#000000" type="color" id="bgColor" />
-            </div>
-          </li>
-          <li>
-            <div class="form-color">
-              <label for="buttonBgColor">Button Background Color</label>
-              <input value="#000000" type="color" id="buttonBgColor" />
-            </div>
-          </li>
-          <li>
-            <div class="form-color">
-              <label for="toggleBgColor">Toggle Background Color</label>
-              <input value="#000000" type="color" id="toggleBgColor" />
-            </div>
-          </li>
-          <li>
-            <div class="form-color">
-              <label for="toggleIconColor"> Toggle Icon Color </label>
-              <input type="color" id="toggleIconColor" />
-            </div>
-          </li>
-          <li>
-            <div class="form-color">
-              <label for="buttonActiveBgColor">
-                Active Button Background Color
+              <label for="toggleActiveIconColor">
+                Active Toggle Icon Color
               </label>
-              <input value="#000000" type="color" id="buttonActiveBgColor" />
-            </div>
-          </li>
-          <li>
-            <div class="form-color">
-              <label for="toggleActiveBgColor">
-                Active Toggle Background Color
-              </label>
-              <input value="#000000" type="color" id="toggleActiveBgColor" />
+              <input value="#000000" type="color" id="toggleActiveIconColor" />
             </div>
           </li>
           <li>
@@ -282,7 +353,7 @@
             </div>
           </li>
         </ul>
-        <ul class="menu_container" id="edit_note">
+        <ul class="menu_container" id="format_color_text">
           <li>
             <div class="form-color">
               <label for="bgColor">Heading Color</label
@@ -348,86 +419,238 @@
         </ul>
       </div>
     </div>
-    <div class="md:w-4/6 lg:w-4/5" id="widget">
-      <iframe
-        src="/pricing/layout-1.html"
-        width="100%"
-        height="100%"
-        frameborder="0"
-      ></iframe>
+    <!-- widget -->
+    <div class="md:w-4/6 lg:w-4/5">
+      <div class="md:p-5 md:text-center p-4">
+        <div class="md:w-3/4 lg:w-1/2 mx-auto mb-2">
+          <p class="text-base tag">Pricing</p>
+        </div>
+        <div class="md:w-3/4 lg:w-1/2 mx-auto mb-4">
+          <h1 class="text-4xl font-bold">Choose the right plan for you</h1>
+          <p class="text-xl pt-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+            veniam? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Blanditiis, veniam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Blanditiis, veniam?
+          </p>
+        </div>
+      </div>
+      <div class="py-5 flex justify-center items-center gap-4">
+        <span>Monthly</span>
+        <label class="switch">
+          <input id="switchData" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <span>Anually</span>
+      </div>
+      <div
+        id="msg"
+        class="opacity-0 scale-0 transition-all duration-200 ease-in-out pb-2"
+      >
+        <p class="text-center">
+          Save
+          <span class="bg-primary rounded-full text-white px-2 py-1">10%</span>
+          on yearly
+        </p>
+      </div>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-5 px-4 gap-7 lg:max-w-7xl mx-auto"
+      >
+        <div class="card relative">
+          <h2 class="text-base font-bold">Basic</h2>
+          <div>
+            <p class="text-sm">
+              The essentials to provide your best work for clients.
+            </p>
+          </div>
+          <div class="mt-5">
+            <p class="text-base">
+              <span>$</span>
+              <span class="price text-5xl font-bold leading-none">15</span>
+              <span>/month</span>
+            </p>
+          </div>
+          <div class="my-5">
+            <button class="btn">Buy plan</button>
+          </div>
+          <ul class="list-disc list-inside grid gap-2">
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              5 products
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Up to 1,000 subscribers
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Basic analytics
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              48-hour support response time
+            </li>
+          </ul>
+        </div>
+        <div class="card card-active relative">
+          <h2 class="text-base font-bold">Basic</h2>
+          <div>
+            <p class="text-sm">
+              The essentials to provide your best work for clients.
+            </p>
+          </div>
+          <div class="mt-5">
+            <p class="text-base">
+              <span>$</span>
+              <span class="price text-5xl font-bold leading-none">15</span>
+              <span>/month</span>
+            </p>
+          </div>
+          <div class="my-5">
+            <button class="btn">Buy plan</button>
+          </div>
+          <ul class="list-disc list-inside grid gap-2">
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              5 products
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Up to 1,000 subscribers
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Basic analytics
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              48-hour support response time
+            </li>
+          </ul>
+        </div>
+        <div class="card relative">
+          <h2 class="text-base font-bold">Basic</h2>
+          <div>
+            <p class="text-sm">
+              The essentials to provide your best work for clients.
+            </p>
+          </div>
+          <div class="mt-5">
+            <p class="text-base">
+              <span>$</span>
+              <span class="price text-5xl font-bold leading-none">15</span>
+              <span>/month</span>
+            </p>
+          </div>
+          <div class="my-5">
+            <button class="btn">Buy plan</button>
+          </div>
+          <ul class="list-disc list-inside grid gap-2">
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              5 products
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Up to 1,000 subscribers
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Basic analytics
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              48-hour support response time
+            </li>
+          </ul>
+        </div>
+        <div class="card relative">
+          <h2 class="text-base font-bold">Basic</h2>
+          <div>
+            <p class="text-sm">
+              The essentials to provide your best work for clients.
+            </p>
+          </div>
+          <div class="mt-5">
+            <p class="text-base">
+              <span>$</span>
+              <span class="price text-5xl font-bold leading-none">15</span>
+              <span>/month</span>
+            </p>
+          </div>
+          <div class="my-5">
+            <button class="btn">Buy plan</button>
+          </div>
+          <ul class="list-disc list-inside grid gap-2">
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              5 products
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Up to 1,000 subscribers
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              Basic analytics
+            </li>
+            <li class="flex">
+              <span class="material-symbols-outlined"> arrow_right </span>
+              48-hour support response time
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script>
-      function editor() {
-        let editor = document.getElementById("editor");
-        editor.classList.add("w-1/5", "bg-base-200", "flex", "flex-wrap");
-        editor.innerHTML = `
-        <div class="bg-gray-700 w-full p-3">
-          <p class="text-gray-200">Edit Widget</p>
-        </div>
-        `;
-        editor.innerHTML += `
-        <div class="w-1/6 h-full">
-        <ul class="pt-4 px-2 h-full flex gap-2 flex-col">
-          <li>
-            <span class="material-symbols-outlined fill_icon"> dashboard </span>
-          </li>
-          <li><span class="material-symbols-outlined"> palette </span></li>
-          <li>
-            <span class="material-symbols-outlined"> format_color_text </span>
-          </li>
-          <li>
-            <span class="material-symbols-outlined"> edit_note </span>
-          </li>
-        </ul>
-      </div>
-      <div class="w-5/6 bg-gray-200 h-full">
-        <ul class="pt-4 px-2 flex gap-2 flex-col">
-          <li class="p-2"><a>Layout 1</a></li>
-          <li class="p-2"><a>Layout 2</a></li>
-        </ul>
-        <ul class="pt-4 px-2 flex gap-2 flex-col">
-          <li>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Title - Tag</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Pricing..."
-                class="input input-bordered w-full max-w-xs"
-              />
-            </div>
-          </li>
-          <li>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Title - H1</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Title..."
-                class="input input-bordered w-full max-w-xs"
-              />
-            </div>
-          </li>
-          <li>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Description</span>
-              </label>
-              <textarea
-                class="textarea textarea-bordered h-24"
-                placeholder="Description..."
-              ></textarea>
-            </div>
-          </li>
-        </ul>
-      </div>
-        `;
+      let pair = {
+        cardBgColorInput: "cardBgColorTextInput",
+        cardBorderColorInput: "cardBorderColorTextInput",
+      };
+
+      let item = [
+        ["cardBgColorInput", "cardBgColorTextInput", "--card-color"],
+        [
+          "cardBorderColorInput",
+          "cardBorderColorTextInput",
+          "--card-border-color",
+        ],
+      ];
+
+      let obj = Object.entries(pair);
+
+      for (let [key, value] of obj) {
+        handleInputColor(key, value);
       }
 
-      // editor();
+      function handleInputColor(id, id2) {
+        document.getElementById(id).addEventListener("input", (e) => {
+          let current = e.target.value;
+          document.getElementById(id2).value = current;
+        });
+      }
+
+      for (let [id1, id2, input] of item) {
+        ["input", "keyup", "keydown", "change"].forEach((event) => {
+          document.getElementById(id1).addEventListener(event, (e) => {
+            let current = e.target.value;
+            for (let [key, value] of Object.entries(pair)) {
+              handleInputColor(value, key);
+            }
+            document.body.style.setProperty(input, current);
+          });
+        });
+        ["input", "keyup", "keydown", "change"].forEach((event) => {
+          document.getElementById(id2).addEventListener(event, (e) => {
+            let current = e.target.value;
+            for (let [key, value] of Object.entries(pair)) {
+              handleInputColor(value, key);
+            }
+            document.body.style.setProperty(input, current);
+          });
+        });
+      }
 
       function showMenu(e) {
         let id = e.target.innerText;
@@ -439,10 +662,96 @@
         document.getElementById(id).classList.add("active");
       }
 
+      let buttons = document.getElementById("textAlignment").children;
+      for (let button of buttons) {
+        button.addEventListener("click", (e) => {
+          for (let button of buttons) {
+            button.classList.remove("btn-active");
+          }
+          button.classList.add("btn-active");
+          document.body.style.setProperty("--card-text-align", button.dataset.textAlign)
+        });
+      }
       function openMenuContent(e) {
         let id = e.target;
-        id.parentElement.parentElement.parentElement.classList.toggle("grid-rows-[auto_1fr]")
-        id.parentElement.parentElement.classList.toggle("border-b")
+        let accordian = id.parentElement.parentElement.parentElement;
+        let content = id.parentElement.parentElement;
+        accordian.classList.toggle("grid-rows-[auto_1fr]");
+        content.classList.toggle("border-b");
+
+        if (accordian.classList.contains("grid-rows-[auto_1fr]")) {
+          accordian.dataset.status = "open";
+        } else {
+          accordian.dataset.status = "close";
+        }
+
+        let { status, elementSelected } = checkStatus(
+          accordian.getAttribute("id")
+        );
+
+        if (status == "open") {
+          let cards = document.querySelectorAll(`.${elementSelected}`);
+          for (let card of cards) {
+            if (!card.classList.contains("card-active")) {
+              card.classList.add("outline", "outline-purple-400", "outline-offset-4");
+            }
+          }
+        } else {
+          let cards = document.querySelectorAll(`.${elementSelected}`);
+          for (let card of cards) {
+            if (!card.classList.contains("card-active")) {
+              card.classList.remove("outline", "outline-purple-400");
+            }
+          }
+        }
+      }
+
+      function checkStatus(id) {
+        let status = document.getElementById(id).dataset.status;
+        let elementSelected = document.getElementById(id).getAttribute("id");
+        return { status, elementSelected };
+      }
+    </script>
+
+    <!-- widget js -->
+    <script>
+      let btn = document.getElementById("switchData");
+      let cardPrice = document.querySelectorAll(".price");
+      let msg = document.querySelector("#msg");
+      let active = document.getElementsByClassName("card-active");
+      let percentValue = 10;
+      let currentValue = [];
+
+      // adding event for checkbox
+      btn.addEventListener("change", updateValue);
+
+      // creating array with the default price
+      document.querySelectorAll(".price").forEach((el) => {
+        currentValue.push(el.innerText);
+      });
+
+      // updating value based on input checbox
+      function updateValue() {
+        if (btn.checked) {
+          cardPrice.forEach((el, i) => {
+            let yearlyValue = currentValue[i] * 12;
+            let per = (yearlyValue * percentValue) / 100;
+            let price = yearlyValue - per;
+            el.innerText = price;
+          });
+          setTimeout(() => {
+            msg.classList.add("opacity-100", "scale-100");
+            msg.classList.remove("opacity-0", "scale-0");
+          }, 100);
+        } else {
+          cardPrice.forEach((el, i) => {
+            el.innerText = currentValue[i];
+          });
+          setTimeout(() => {
+            msg.classList.remove("opacity-100", "scale-100");
+            msg.classList.add("opacity-0", "scale-0");
+          }, 100);
+        }
       }
     </script>
   </body>

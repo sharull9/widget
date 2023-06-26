@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* color */
+  --bgColor: #ff0000;
+  --cardBgColor: #000000;
+  --cardBorderColor: #000000;
+  --buttonBgColor: #000000;
+  --toggleBgColor: #000000;
+  --toggleIconColor: #000000;
+  --buttonActiveBgColor: #000000;
+  --cardActiveBgColor: #000000;
+  --toggleActiveBgColor: #000000;
+  --toggleActiveIconColor: #000000;
+  --cardActiveBorderColor: #000000;
+
+  /* text */
+  --titleColor: #000000;
+  --textColor: #000000;
+  --tagColor: #000000;
+  --cardTitleColor: #000000;
+  --cardTextColor: #000000;
+  --cardPriceColor: #000000;
+  --buttonTextColor: #000000;
+  --bulletPointColor: #000000;
+  --cardActiveTitleColor: #000000;
+  --buttonActiveTextColor: #000000;
+
+  /* daisy ui */
+  --padding-card: 0.5rem;
+}
+
+.fill_icon {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-blue-400;
+  }
+  li {
+    @apply cursor-pointer;
+  }
+
+  label {
+    @apply cursor-pointer;
+  }
+
+  input,
+  .input,
+  textarea,
+  .textarea {
+    @apply outline-none ring-0 focus:outline-none focus:ring-0 focus:scale-100;
+  }
+
+  input[type="color"] {
+    -webkit-appearance: none;
+    @apply rounded-lg overflow-hidden flex-shrink-0 border;
+  }
+}
+@layer components {
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    @apply p-0 rounded-lg;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    @apply rounded-lg border;
+  }
+
+  .form-color {
+    @apply flex justify-between items-center gap-1 p-2 bg-white text-gray-500 rounded-xl;
+  }
+  .menu_container {
+    @apply pt-4 px-2 gap-2 flex-col h-full overflow-y-scroll overflow-x-hidden hidden;
+  }
+  .menu_container.active {
+    @apply flex;
+  }
+  .menu_accordian {
+    @apply bg-white border border-gray-200 shadow-sm rounded-xl;
+  }
+  .btn-group > .btn {
+    @apply border-gray-200 bg-gray-100 text-gray-600 flex-1;
+  }
+  .btn-group > .btn-active {
+    @apply border-gray-200 bg-white text-gray-600 flex-1;
+  }
+  .menu_content > *:last-child {
+    @apply pb-2;
+  }
+  .input {
+    @apply h-10;
+  }
+  .label {
+    @apply px-0;
+  }
+}
