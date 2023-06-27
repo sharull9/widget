@@ -18,7 +18,6 @@
 //     ["activeCardButtonBorderSize", ""],
 // ]
 
-
 // collapseColorId.forEach((card) => {
 //     let element = document.getElementById(card)
 //     element.addEventListener("click", () => {
@@ -76,31 +75,61 @@ class="w-full max-w-xs"
 </li>
 `;
 
-function getTextInput(value){
-    let textInput = `
-<li class="">
-<div class="w-full max-w-xs">
-<label class="label">
-<span class="label-text">Text</span>
-</label>
-<input
-type="text"
-value="${value}"
-class="w-full max-w-xs"
-/>
-</div>
-</li>
+function getTextInput(value) {
+  let textInput = `
+    <li class="">
+        <div class="w-full max-w-xs">
+            <label class="label">Text</label>
+            <input type="text" value="${value}" class="w-full max-w-xs" />
+        </div>
+    </li>
 `;
-
-return textInput;
+  return textInput;
+}
+function getTextArea(value) {
+  let textInput = `
+    <li class="">
+        <div class="w-full max-w-xs">
+            <label class="label">Text</label>
+            <textarea class="w-full max-w-xs">${value}"</textarea>
+        </div>
+    </li>
+`;
+  return textInput;
 }
 
-let text = ["TextInput", "color", "bgColor", "fontSize", "fontWeight", "textAlign"];
-let card = ["TextInput", "color", "bgColor", "fontSize", "fontWeight", "textAlign"];
+let text = [
+  "TextInput",
+  "color",
+  "bgColor",
+  "fontSize",
+  "fontWeight",
+  "textAlign",
+];
+let textArea = [
+  "TextArea",
+  "color",
+  "bgColor",
+  "fontSize",
+  "fontWeight",
+  "textAlign",
+];
+let card = ["Card", "bgColor", "borderColor", "borderWidth"];
+let activeCard = ["Activecard", "bgColor", "borderColor", "borderWidth"];
+let button = [
+  "Button",
+  "bgColor",
+  "borderColor",
+  "borderWidth",
+  "color",
+  "fontSize",
+  "fontWeight",
+  "textAlign",
+];
+let list = ["List", "icon", "fontSize", "fontWeight", "textAlign"];
 
 let cardHTML = "";
-text.forEach((item)=> {
-    cardHTML += eval("get" + item+"('India');");
-    console.log(cardHTML)
+text.forEach((item) => {
+  cardHTML += eval("get" + item + "('India');");
+  console.log(cardHTML);
 });
-
