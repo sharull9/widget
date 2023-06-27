@@ -2,5 +2,5 @@
 module.exports = {
   content: ["./edit.html"],
   theme: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
